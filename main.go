@@ -63,14 +63,14 @@ func (t Training) TrainingInfo() InfoMessage {
 	return InfoMessage{
           TrainingType: t.TrainingType,
           Duration:     t.Duration,
-          Distance:     t.Distance(),
+          Distance:     t.distance(),
           Speed:        t.meanSpeed(),
           Calories:     t.Calories(),
-
+       } 
 }
 
 // String возвращает строку с информацией о проведенной тренировке.
-func (i InfoMessage) String() string {
+func (i InfoMessage) String() string{
 	return fmt.Sprintf("Тип тренировки: %s\nДлительность: %v мин\nДистанция: %.2f км.\nСр. скорость: %.2f км/ч\nПотрачено ккал: %.2f\n",
 		i.TrainingType,
 		i.Duration.Minutes(),
@@ -170,7 +170,7 @@ func (s Swimming) meanSpeed() float64 {
 	if s.Duration == 0{
           return 0
        }
-    return float64(s.LengthPool) * float64(s.countPool) / MInKm / s.Duration.Hours()
+    return float64(s.LengthPool) * float64(s.CountPool) / MInKm / s.Duration.Hours()
 }
 
 // Calories возвращает количество калорий, потраченных при плавании.
@@ -189,7 +189,7 @@ func (s Swimming) TrainingInfo() InfoMessage {
 	return InfoMessage{
           TrainingType: s.TrainingType,
           Duration:     s.Duration,
-          Distance:     s.Distance(),
+          Distance:     s.distance(),
           Speed:        s.meanSpeed(),
           Calories:     s.Calories(),
     }
